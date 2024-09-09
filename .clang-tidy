@@ -1,0 +1,11 @@
+---
+# @todo #1:60min configure all necessary Checks. Also come up with naming conventions and configure other
+#  readability-identifier-naming option.
+Checks:     '
+    readability-*,
+            '
+CheckOptions:
+  - { key: readability-identifier-naming.GlobalConstantCase,  value: UPPER_CASE }
+  - { key: readability-identifier-naming.MemberSuffix,        value: _          }
+WarningsAsErrors: '*'
+HeaderFilterRegex: 'include/*'

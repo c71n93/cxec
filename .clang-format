@@ -1,0 +1,5 @@
+---
+# @todo #1:30min configure custom rules based on Google code style
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 100
