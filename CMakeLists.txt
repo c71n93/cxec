@@ -11,9 +11,23 @@ add_executable(cxec
     src/main.cpp
 )
 
-# search for clang-tidy
+# Setting up clang-tidy and clang-format
+
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
-# setup clang-tidy command from executable + options
 set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
-# set CXX_CLANG_TIDY property after defining the target
 set_target_properties(cxec PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+
+file(GLOB_RECURSE
+        ALL_CXX_SOURCE_FILES
+        *.[chi]pp *.[chi]xx *.cc *.hh *.ii *.[CHI]
+)
+find_program(CLANG_FORMAT "clang-format")
+if(CLANG_FORMAT)
+    add_custom_target(
+        clang-format
+        COMMAND ${CLANG_FORMAT}
+        -i
+        -style=file
+        ${ALL_CXX_SOURCE_FILES}
+    )
+endif()
