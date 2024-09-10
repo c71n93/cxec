@@ -1,6 +1,6 @@
 #pragma once
 
-class cxec final {
+class Cxec final {
 private:
     int f_ = 0;
 };
